@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Rock, Paper, Scissors</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          <span>Rock</span>
+          <span>Paper</span>
+          <span>Scissors</span>
+        </h1>
+        <div class="score-container">
+          <h4>Score</h4>
+          <p id="score">0</p>
+        </div>
+      </header>
+
+      <main id="main">
+        <button class="btn-circle btn-paper pick" data-choice="paper">
+          <span class="wrapper">
+            <img src="./images/icon-paper.svg" alt="paper icon" />
+          </span>
+        </button>
+        <button class="btn-circle btn-scissors pick" data-choice="scissors">
+          <span class="wrapper">
+            <img src="./images/icon-scissors.svg" alt="scissors icon" />
+          </span>
+        </button>
+        <button class="btn-circle btn-rock pick" data-choice="rock">
+          <span class="wrapper">
+            <img src="./images/icon-rock.svg" alt="rock icon" />
+          </span>
+        </button>
+      </main>
+
+      <div class="rules-modal" id="modal">
+        <img src="./images/image-rules.svg" alt="rules" />
+        <button id="close">
+          <img src="./images/icon-close.svg" alt="close" />
+        </button>
+      </div>
+    </div>
+
+    <div class="selection" id="selection">
+      <div>
+        <h2>You picked</h2>
+        <button class="btn-circle btn-paper" id="user_select">
+          <span class="wrapper">
+            <img src="./images/icon-paper.svg" alt="paper icon" />
+          </span>
+        </button>
+      </div>
+      <div class="mobile-reset">
+        <p class="big-text" id="winner"></p>
+        <button class="btn" id="reset">Play again</button>
+      </div>
+      <div>
+        <h2>The house picked</h2>
+        <button class="btn-circle btn-rock" id="computer_select">
+          <span class="wrapper">
+            <img src="./images/icon-rock.svg" alt="rock icon" />
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="options">
+      <a href="./bonus/index.html"><button class="btn">Bonus</button></a>
+      <button class="btn-rules" id="open">Rules</button>
+    </div>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    <script src="./app.js"></script>
+  </body>
+</html>

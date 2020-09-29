@@ -1,0 +1,390 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  background: radial-gradient(
+    circle at 50% 10%,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
+  min-height: 100vh;
+  color: #fff;
+}
+
+.container {
+  width: 600px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+header {
+  border: 1px solid hsl(217, 16%, 45%);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 50px 0;
+}
+
+h1 {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 3rem;
+}
+
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+h4 {
+  color: hsl(229, 64%, 46%);
+  margin: 0;
+  letter-spacing: 5px;
+}
+
+.options {
+  position: absolute;
+  bottom: 150px;
+  right: 20%;
+}
+
+.score-container {
+  background-color: #fff;
+  padding: 20px 40px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.score-container p {
+  color: hsl(229, 25%, 31%);
+  font-size: 3.5rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.btn-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: inset 0 -6px rgba(0, 0, 0, 0.3);
+  margin: 0 25px;
+  cursor: pointer;
+}
+
+.btn-circle:hover {
+  transform: scale(1.2);
+}
+
+.btn-circle:focus {
+  outline: none;
+}
+
+.btn-circle:active {
+  transform: scale(0.9);
+}
+
+.btn-circle .wrapper {
+  background-color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  box-shadow: inset 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-paper {
+  background: linear-gradient(
+    to bottom,
+    hsl(230, 89%, 62%),
+    hsl(230, 89%, 65%)
+  );
+}
+
+.btn-scissors {
+  background: linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+}
+
+.btn-rock {
+  background: linear-gradient(
+    to bottom,
+    hsl(349, 71%, 52%),
+    hsl(349, 70%, 56%)
+  );
+}
+
+main {
+  width: 400px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  position: relative;
+}
+
+main::before {
+  content: "";
+  background-image: url("./images/bg-triangle.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70%;
+  width: 70%;
+  top: 20%;
+  left: 15%;
+  position: absolute;
+  z-index: -1;
+}
+
+.btn {
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background-color: #fff;
+  color: hsl(229, 25%, 31%);
+  font-family: inherit;
+  padding: 10px 25px;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.btn-rules {
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #fff;
+  font-family: inherit;
+  padding: 10px 25px;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-left: 1.5em;
+}
+
+.selection {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  min-width: 500px;
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.selection .btn-circle {
+  transform: scale(1.4);
+  margin: 50px;
+}
+
+.big-text {
+  font-size: 3rem;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+  font-size: 3rem;
+}
+
+.attribution {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.attribution a {
+  text-decoration: none;
+  color: #fb8674;
+}
+
+.rules-modal {
+  background-color: #f0f0f0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50vw;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 100;
+  border-radius: 50px;
+  padding: 1em;
+}
+
+.rules-modal button {
+  background-color: transparent;
+  border: none;
+  margin-top: 100px;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+#computer_select,
+#user_select {
+  pointer-events: none;
+}
+
+@keyframes win {
+  0% {
+    box-shadow: 0 0 2px 20px rgba(240, 240, 240, 0.6);
+  }
+  25% {
+    box-shadow: 0 0 2px 20px rgba(240, 240, 240, 0.6),
+      0 0 2px 40px rgba(240, 240, 240, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 2px 20px rgba(240, 240, 240, 0.6),
+      0 0 2px 40px rgba(240, 240, 240, 0.4),
+      0 0 2px 60px rgba(240, 240, 240, 0.2);
+  }
+  75% {
+    box-shadow: 0 0 2px 20px rgba(240, 240, 240, 0.6),
+      0 0 2px 40px rgba(240, 240, 240, 0.4),
+      0 0 2px 60px rgba(240, 240, 240, 0.2),
+      0 0 2px 80px rgba(240, 240, 240, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 2px 20px rgba(240, 240, 240, 0.2),
+      0 0 2px 40px rgba(240, 240, 240, 0.2),
+      0 0 2px 60px rgba(240, 240, 240, 0.15),
+      0 0 2px 80px rgba(240, 240, 240, 0.1);
+  }
+}
+
+@media (max-height: 870px) {
+  .options {
+    position: static;
+    margin: 3rem auto 0;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .attribution {
+    position: static;
+    margin: 4em auto 0;
+    width: 80%;
+    transform: none;
+  }
+}
+
+@media (max-width: 732px) {
+  .mobile-reset {
+    order: 1;
+  }
+
+  .rules-modal {
+    top: 0;
+    left: 0;
+    transform: none;
+    height: 100%;
+    width: 100%;
+    border-radius: unset;
+  }
+}
+
+@media (max-width: 695px) {
+  .selection .btn-circle {
+    transform: scale(1);
+    margin: 50px;
+  }
+}
+
+@media (max-width: 550px) {
+  .attribution {
+    font-size: 1rem;
+  }
+
+  .btn-circle {
+    transform: scale(0.8);
+  }
+
+  .btn-circle:hover {
+    transform: scale(1);
+  }
+
+  .score-container {
+    padding: 5px 20px;
+  }
+
+  .options {
+    position: static;
+    margin: 3rem auto 0;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+  }
+
+  header {
+    line-height: unset;
+    padding: 10px;
+  }
+
+  header h1 {
+    text-align: left;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .selection .btn-circle {
+    margin: 10px 20px;
+  }
+
+  .selection {
+    min-width: 380px;
+  }
+}
+
+@media (max-width: 400px) {
+  header {
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  main::before {
+    width: 60%;
+    height: 60%;
+    left: 20%;
+  }
+
+  .selection .btn-circle {
+    transform: scale(0.8);
+  }
+
+ 
+ 
+ 
+ 
+ 
+ 
+}
